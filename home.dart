@@ -1,126 +1,92 @@
-import 'package:fit4u/services/auth.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:fit4u/services/database.dart';
 import 'package:flutter/material.dart';
-
 import 'package:flutter_svg/svg.dart';
-import 'package:fit4u/screens/details_screen.dart';
-import 'package:fit4u/widgets/bottom_nav_bar.dart';
-import 'package:fit4u/widgets/category_card.dart';
-import 'package:fit4u/widgets/search_bar.dart';
+import 'package:fit4u/shared/constants.dart';
+import 'file:///C:/Users/kdisa/AndroidStudioProjects/fit4u/lib/widgets/search_bar.dart';
+import 'package:fit4u/screens/home.dart';
+import 'package:provider/provider.dart';
+import 'package:provider/provider.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:fit4u/screens/exerciseList.dart';
 
-class Home extends StatelessWidget {
-
-  final AuthService _auth = AuthService();
-
+class Survey extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    var size = MediaQuery
-        .of(context)
-        .size; //this gonna give us total height and with of our device
-    return Scaffold(
-      appBar: AppBar (
-        title: Text("Fit4U",
-          style: TextStyle(
-              color: Colors.black
+    var size = MediaQuery.of(context).size;
+    return StreamProvider<QuerySnapshot>.value(
+      value: DatabaseService().fit4u,
+      child: Scaffold(
+          appBar: AppBar(
+            elevation: 0.0,
+            backgroundColor: Colors.teal[100],
+            actions: [
+              /*FlatButton.icon(
+              icon: Icon(Icons.arrow_back),
+                label: Text(""),
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => Home())
+                  );
+                }
+                )*/
+            ],
           ),
-        ),
-        backgroundColor: Color(0xFFF2BEA1),
-        elevation: 0.0,
-        actions: [
-          FlatButton.icon(
-              onPressed: () async{
-                await _auth.signOut();
-              },
-              icon: Icon(Icons.person),
-              label: Text("Log out")
-          )
-        ],
-      ),
-      bottomNavigationBar: BottomNavBar(),
-      body: Stack(
-        children: <Widget>[
-          Container(
-            // Here the height of the container is 45% of our total height
-            height: size.height * .45,
-            decoration: BoxDecoration(
-              color: Color(0xFFF5CEB8),
-              image: DecorationImage(
-                alignment: Alignment.centerLeft,
-                image: AssetImage("assets/images/undraw_pilates_gpdb.png"),
-              ),
-            ),
-          ),
-          SafeArea(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  Align(
-                    alignment: Alignment.topRight,
-                    child: Container(
-                      alignment: Alignment.center,
-                      height: 52,
-                      width: 52,
+          body: StreamBuilder(
+              stream: FirebaseFirestore.instance.collection("exercises").snapshots(),
+              builder: (context, snapshot) {
+                return Stack(
+                  children: <Widget>[
+                    Container(
+                      height: size.height * .45,
                       decoration: BoxDecoration(
-                        color: Color(0xFFF2BEA1),
-                        shape: BoxShape.circle,
+                        color: Colors.teal[100],
+                        //image: DecorationImage(
+                        // image: AssetImage("assets/images/meditation_bg.png"),
+                        // fit: BoxFit.fitWidth,
+                        // ),
                       ),
-                      child: SvgPicture.asset("assets/icons/menu.svg"),
                     ),
-                  ),
-                  Text(
-                    "Good Morning Michael",
-                    style: Theme
-                        .of(context)
-                        .textTheme
-                        .display1
-                        .copyWith(fontWeight: FontWeight.w900),
-                  ),
-                  SearchBar(),
-                  Expanded(
-                    child: GridView.count(
-                      crossAxisCount: 2,
-                      childAspectRatio: .85,
-                      crossAxisSpacing: 20,
-                      mainAxisSpacing: 20,
-                      children: <Widget>[
-                        CategoryCard(
-                          title: "Cardio",
-                          svgSrc: "assets/icons/cardio3.svg",
-                          press: () {},
+                    SafeArea(
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 20),
+                        child: SingleChildScrollView(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget>[
+                              SizedBox(
+                                height: size.height * 0.05,
+                              ),
+                              Text(
+                                "Registration Survey",
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .display1
+                                    .copyWith(fontWeight: FontWeight.w900),
+                              ),
+                              SizedBox(height: 10),
+                              Text(
+                                "So we can learn a tailor workouts specifically to you!",
+                                style: TextStyle(fontWeight: FontWeight.bold),
+                              ),
+                              SizedBox(height: 10),
+                              SizedBox(
+                                width: size.width * .6, // it just take 60% of total width
+                                child: Text(
+                                  "It's time to pump some iron!",
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
-                        CategoryCard(
-                          title: "Stretching",
-                          svgSrc: "assets/icons/Excrecises.svg",
-                          press: () {},
-                        ),
-                        CategoryCard(
-                          title: "Arm Exercises",
-                          svgSrc: "assets/icons/arms.svg",
-                          press: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(builder: (context) {
-                                return DetailsScreen();
-                              }),
-                            );
-                          },
-                        ),
-                        CategoryCard(
-                          title: "Core Exercises",
-                          svgSrc: "assets/icons/yoga.svg",
-                          press: () {},
-                        ),
-                      ],
+                      ),
                     ),
-                  ),
-                ],
-              ),
-            ),
+                  ],
+                );
+              }
           )
-        ],
       ),
     );
-   }
   }
+}
