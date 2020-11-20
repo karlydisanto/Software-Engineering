@@ -52,7 +52,15 @@ class _SignInState extends State<SignIn> {
           key: _formKey,
           child: Column(
             children: [
-              SizedBox(height: 20.0),
+              Container(
+                width: 150,
+                height: 150,
+                  decoration: BoxDecoration(
+                    color: Colors.teal,
+                    shape: BoxShape.circle
+                  ),
+              ),
+              SizedBox(height: 50),
               TextFormField(
                 validator: (val) => val.isEmpty ? "Enter an email" : null,
                 onChanged: (val) => email = val,
