@@ -1,26 +1,61 @@
-import 'package:fit4u/services/auth.dart';
-import 'package:fit4u/wrapper.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'package:provider/provider.dart';
-import 'package:fit4u/models/user.dart';
 
-void main()async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
-  runApp(MyApp());
+
+void main() => runApp(new MyApp());
+
+class MyApp extends StatefulWidget {
+  @override
+  _MyAppState createState() => _MyAppState();
 }
 
-class MyApp extends StatelessWidget {
-    @override
-    Widget build(BuildContext context) {
-      return StreamProvider<TheUser>.value(
-        value: AuthService().user,
-        child: MaterialApp(
-          home: Wrapper(),
-        ),
-      );
+class _MyAppState extends State<MyApp> {
+  List<DynamicWidget> listDynamic = [];
+
+  addDynamic() {
+    listDynamic.add(new DynamicWidget());
+    setState(() {
+
+    });
   }
+
+  @override
+  Widget build(BuildContext context) {
+    return new MaterialApp(
+      home: new Scaffold(
+        appBar: new AppBar(
+          title: new Text('Fit4U Survey'),
+        ),
+        body: new Container(
+          child: new Column(
+            children: <Widget>[
+              new Flexible(child: new ListView.builder(
+                  itemCount: listDynamic.length,
+                  itemBuilder: (_, index) => listDynamic[index])),
+              new Container(
+                width: 180.0,
+                height: 120.0,
+                child: new RaisedButton(onPressed: null,child: new Text('Submit Survey'),),
+              )
+            ],
+          ),
+        ),
+        floatingActionButton: new FloatingActionButton(onPressed: addDynamic,
+          child: new Icon(Icons.add),),
+      ),
+    );
+  }
+
+}
+
+class DynamicWidget extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: new EdgeInsets.all(23.0),
+      child: new TextField(
+        decoration: new InputDecoration(hintText: 'Enter Data'),
+      ),
+    );
+  }
+
 }
