@@ -1,5 +1,5 @@
-import 'file:///C:/Users/kdisa/AndroidStudioProjects/fit4u/lib/screens/authenticate.dart';
-import 'file:///C:/Users/kdisa/AndroidStudioProjects/fit4u/lib/screens/home.dart';
+import 'package:fit4u/screens/authenticate.dart';
+import 'package:fit4u/screens/home.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:fit4u/models/user.dart';
