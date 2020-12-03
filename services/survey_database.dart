@@ -21,7 +21,7 @@ class DatabaseService2 {
       "Fitness Level": fitnessLevel,
       "Workout Days": workoutDays,
       "Fitness Goal": goal,
-      "Exercises Generated": exercises
+      "Exercises Generated": exercises,
     });
   }
 
