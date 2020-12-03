@@ -27,9 +27,6 @@ class _SignInState extends State<SignIn> {
 
   @override
   Widget build(BuildContext context) {
-    if (loading) {
-      return Loading();
-    } else {
       return Scaffold(
         resizeToAvoidBottomPadding: false,
         body: Column(
@@ -64,6 +61,7 @@ class _SignInState extends State<SignIn> {
             Container(
                 padding: EdgeInsets.only(top: 35.0, left: 20.0, right: 20.0),
                 child: Form(
+                  key: _formKey,
                   child: Column(
                     children: <Widget>[
                       TextField(
@@ -75,7 +73,7 @@ class _SignInState extends State<SignIn> {
                                 color: Colors.grey),
                             focusedBorder: UnderlineInputBorder(
                                 borderSide: BorderSide(color: Colors.teal))),
-                        validator: (val) => val.isEmpty ? "Enter an email" : null,
+                        //validator: (val) => val.isEmpty ? "Enter an email" : null,
                         onChanged: (val) => email = val,
                       ),
                       SizedBox(height: 20.0),
@@ -89,7 +87,7 @@ class _SignInState extends State<SignIn> {
                             focusedBorder: UnderlineInputBorder(
                                 borderSide: BorderSide(color: Colors.teal))),
                         obscureText: true,
-                        validator: (val) => val.length < 6 ? "Enter a password greater than 6 characters" : null,
+                        //validator: (val) => val.length < 6 ? "Enter a password greater than 6 characters" : null,
                         onChanged: (val){
                           setState(() {
                             password = val;
@@ -123,7 +121,7 @@ class _SignInState extends State<SignIn> {
                               child: Text(
                                 'LOGIN',
                                 style: TextStyle(
-                                    color: Colors.black,
+                                    color: Colors.white,
                                     fontWeight: FontWeight.bold,
                                     fontFamily: 'Montserrat'),
                               ),
@@ -172,5 +170,5 @@ class _SignInState extends State<SignIn> {
         ));
     }
   }
-}
+
 
