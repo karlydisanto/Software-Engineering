@@ -121,7 +121,7 @@ class _SignInState extends State<SignIn> {
                               child: Text(
                                 'LOGIN',
                                 style: TextStyle(
-                                    color: Colors.white,
+                                    color: Colors.teal,
                                     fontWeight: FontWeight.bold,
                                     fontFamily: 'Montserrat'),
                               ),
@@ -131,10 +131,10 @@ class _SignInState extends State<SignIn> {
                       ),
                       SizedBox(height: 40.0),
                       Container(
-                        padding: EdgeInsets.fromLTRB(40.0, 20.0, 0.0, 0.0),
+                        alignment: Alignment.center,
                         child: Text(error,
                             style: TextStyle(
-                                fontSize: 10.0,
+                                fontSize: 15.0,
                                 fontWeight: FontWeight.bold,
                                 color: Colors.red)),
                       )
