@@ -123,7 +123,7 @@ class _SignInState extends State<SignIn> {
                               child: Text(
                                 'LOGIN',
                                 style: TextStyle(
-                                    color: Colors.white,
+                                    color: Colors.black,
                                     fontWeight: FontWeight.bold,
                                     fontFamily: 'Montserrat'),
                               ),
