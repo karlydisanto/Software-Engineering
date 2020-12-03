@@ -3,7 +3,6 @@ import 'package:fit4u/services/exercise_database.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:fit4u/shared/constants.dart';
-import 'file:///C:/Users/kdisa/AndroidStudioProjects/fit4u/lib/widgets/search_bar.dart';
 import 'package:fit4u/screens/home.dart';
 import 'package:provider/provider.dart';
 import 'package:provider/provider.dart';

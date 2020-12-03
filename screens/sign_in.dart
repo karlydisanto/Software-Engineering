@@ -4,6 +4,8 @@ import 'package:fit4u/shared/loading.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import '../locator.dart';
+
 class SignIn extends StatefulWidget {
 
   final Function toggleView;
@@ -15,7 +17,8 @@ class SignIn extends StatefulWidget {
 }
 
 class _SignInState extends State<SignIn> {
-  final AuthService _auth = AuthService();
+  // getting object of AuthService
+  final AuthService _auth = locator.get<AuthService>();
   final _formKey = GlobalKey<FormState>();
   bool loading = false;
 
@@ -27,7 +30,7 @@ class _SignInState extends State<SignIn> {
 
   @override
   Widget build(BuildContext context) {
-      return Scaffold(
+    return Scaffold(
         resizeToAvoidBottomPadding: false,
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -59,8 +62,8 @@ class _SignInState extends State<SignIn> {
               ),
             ),
             Container(
-                padding: EdgeInsets.only(top: 35.0, left: 20.0, right: 20.0),
-                child: Form(
+              padding: EdgeInsets.only(top: 35.0, left: 20.0, right: 20.0),
+              child: Form(
                   key: _formKey,
                   child: Column(
                     children: <Widget>[
@@ -140,13 +143,13 @@ class _SignInState extends State<SignIn> {
                       )
                     ],
                   )),
-                ),
+            ),
             SizedBox(height: 15.0),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 Text(
-                  'New to Fit4U?',
+                  'New to Fit4u?',
                   style: TextStyle(fontFamily: 'Montserrat'),
                 ),
                 SizedBox(width: 5.0),
@@ -168,7 +171,6 @@ class _SignInState extends State<SignIn> {
             )
           ],
         ));
-    }
   }
-
+}
 

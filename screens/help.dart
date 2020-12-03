@@ -3,7 +3,6 @@ import 'package:fit4u/services/exercise_database.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:fit4u/shared/constants.dart';
-import 'file:///C:/Users/kdisa/AndroidStudioProjects/fit4u/lib/widgets/search_bar.dart';
 import 'package:fit4u/screens/home.dart';
 import 'package:provider/provider.dart';
 import 'package:provider/provider.dart';
@@ -48,6 +47,26 @@ class HelpPage extends StatelessWidget {
                                 style: TextStyle(fontWeight: FontWeight.bold,
                                 fontSize: 15),
                               ),
+
+                              SizedBox(height:25),
+                              Text('I can’t login to Fit4U, what should I do?',style: TextStyle(fontWeight: FontWeight.bold,
+                                  fontSize: 15)),
+                              SizedBox(height:5),
+                              Text('Please check your username and password. If they are correct, you might close Fit4u and try it again for one or two times.',style: TextStyle(
+                                  fontSize: 12)),
+                              SizedBox(height:25),
+                              Text('I am unable to register, what should I do?',style: TextStyle(fontWeight: FontWeight.bold,
+                                  fontSize: 15)),
+                              SizedBox(height:5),
+                              Text('Please check that you are entering a valid email and password.',style: TextStyle(
+                                  fontSize: 12)),
+                              SizedBox(height:25),
+                              Text('Is filling out the survey mandatory?',style: TextStyle(fontWeight: FontWeight.bold,
+                                  fontSize: 15)),
+                              SizedBox(height:5),
+                              Text('In order to experience the full functionality of the application, it is recommended that you fill out the survey.',style: TextStyle(
+                                  fontSize: 12))
+
                             ],
                           ),
                         ),
