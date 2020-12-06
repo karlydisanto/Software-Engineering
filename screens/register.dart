@@ -1,5 +1,3 @@
-import 'package:fit4u/shared/constants.dart';
-import 'package:fit4u/shared/loading.dart';
 import 'package:flutter/material.dart';
 import 'package:fit4u/services/auth.dart';
 
@@ -61,22 +59,23 @@ class _RegisterState extends State<Register> {
                 key: _formKey,
                 child: Column(
                   children: <Widget>[
-                    TextField(
-                      //validator: (val) => null,
+                    TextFormField(
                       onChanged: (val) => email = val,
+                      validator: (val) => val.isEmpty ? "Enter an email" : null,
                       decoration: InputDecoration(
                           labelText: 'EMAIL',
                           labelStyle: TextStyle(
                               fontFamily: 'Montserrat',
                               fontWeight: FontWeight.bold,
                               color: Colors.grey),
-                          // hintText: 'EMAIL',
-                          // hintStyle: ,
                           focusedBorder: UnderlineInputBorder(
-                              borderSide: BorderSide(color: Colors.teal))),
+                              borderSide: BorderSide(color: Colors.teal)
+                          )
+                      ),
                     ),
                     SizedBox(height: 10.0),
-                    TextField(
+                    TextFormField(
+                      validator: (val) => val.length < 6 ? "Enter a password greater than 6 characters" : null,
                       decoration: InputDecoration(
                           labelText: 'PASSWORD ',
                           labelStyle: TextStyle(
@@ -85,7 +84,6 @@ class _RegisterState extends State<Register> {
                               color: Colors.grey),
                           focusedBorder: UnderlineInputBorder(
                               borderSide: BorderSide(color: Colors.teal))),
-                      //validator: (val) => val.length < 6 ? "Enter a password greater than 6 characters" : null,
                       obscureText: true,
                       onChanged: (val) {
                         setState(() {
@@ -101,8 +99,8 @@ class _RegisterState extends State<Register> {
                           shadowColor: Colors.tealAccent,
                           color: Colors.teal,
                           elevation: 7.0,
-                          child: GestureDetector(
-                            onTap: () async {
+                          child: RaisedButton(
+                            onPressed: () async {
                               if(_formKey.currentState.validate()){
                                 setState(() {
                                   loading = true;
@@ -110,7 +108,7 @@ class _RegisterState extends State<Register> {
                                 dynamic result = await _auth.registerWithEmailAndPassword(email, password);
                                 if(result == null) {
                                   setState(() {
-                                    error = ("Could not log in with those credentials");
+                                    error = ("Could not create an account with those credentials!");
                                     loading = false;
                                   });
                                 }
@@ -120,7 +118,7 @@ class _RegisterState extends State<Register> {
                               child: Text(
                                 'SIGNUP',
                                 style: TextStyle(
-                                    color: Colors.white,
+                                    color: Colors.teal,
                                     fontWeight: FontWeight.bold,
                                     fontFamily: 'Montserrat'),
                               ),
