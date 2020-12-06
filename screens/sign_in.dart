@@ -56,7 +56,7 @@ class _SignInState extends State<SignIn> {
                         style: TextStyle(
                             fontSize: 80.0,
                             fontWeight: FontWeight.bold,
-                            color: Colors.tealAccent)),
+                            color: Colors.teal)),
                   )
                 ],
               ),
@@ -67,7 +67,7 @@ class _SignInState extends State<SignIn> {
                   key: _formKey,
                   child: Column(
                     children: <Widget>[
-                      TextField(
+                      TextFormField(
                         decoration: InputDecoration(
                             labelText: 'EMAIL',
                             labelStyle: TextStyle(
@@ -76,11 +76,11 @@ class _SignInState extends State<SignIn> {
                                 color: Colors.grey),
                             focusedBorder: UnderlineInputBorder(
                                 borderSide: BorderSide(color: Colors.teal))),
-                        //validator: (val) => val.isEmpty ? "Enter an email" : null,
+                        validator: (val) => val.isEmpty ? "Enter an email" : null,
                         onChanged: (val) => email = val,
                       ),
                       SizedBox(height: 20.0),
-                      TextField(
+                      TextFormField(
                         decoration: InputDecoration(
                             labelText: 'PASSWORD',
                             labelStyle: TextStyle(
@@ -90,7 +90,7 @@ class _SignInState extends State<SignIn> {
                             focusedBorder: UnderlineInputBorder(
                                 borderSide: BorderSide(color: Colors.teal))),
                         obscureText: true,
-                        //validator: (val) => val.length < 6 ? "Enter a password greater than 6 characters" : null,
+                        validator: (val) => val.length < 6 ? "Enter a password greater than 6 characters" : null,
                         onChanged: (val){
                           setState(() {
                             password = val;
@@ -173,4 +173,3 @@ class _SignInState extends State<SignIn> {
         ));
   }
 }
-
