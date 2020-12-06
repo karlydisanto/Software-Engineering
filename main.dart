@@ -1,5 +1,7 @@
 import 'package:fit4u/locator.dart';
+import 'package:fit4u/models/exercise.dart';
 import 'package:fit4u/services/auth.dart';
+import 'package:fit4u/services/exercise_database.dart';
 import 'package:fit4u/wrapper.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -19,13 +21,23 @@ class MyApp extends StatelessWidget {
 
   // getting from locator
   AuthService _auth = locator.get<AuthService>();
-    @override
-    Widget build(BuildContext context) {
-      return StreamProvider<TheUser>.value(
-        value: _auth.user,
-        child: MaterialApp(
-          home: Wrapper(),
-        ),
-      );
+
+  @override
+  Widget build(BuildContext context) {
+
+    return MultiProvider(
+      providers: [
+        StreamProvider<TheUser>.value(value: _auth.user),
+        StreamProvider<Exercise>.value(value: DatabaseService().exerciseData)
+      ],
+      child: MaterialApp(
+        home: Wrapper(),
+      ),
+    );
+      /*
+      StreamProvider<TheUser>.value(
+      value: _auth.user,
+
+    );*/
   }
 }
