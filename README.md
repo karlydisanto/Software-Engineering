@@ -29,6 +29,10 @@ https://firebase.google.com/docs/flutter/setup
 
 4. Once all of these installations and connections have been made, the program can be run by choosing a device from Android Studios (Tools --> AVD Manager --> Download a device)
 
-5. The application itself can be run from the terminal by using the command - flutter run - or it can be run by clicking the green triangle play button
+5. Once all of the files are correctly downloaded in Android Studio, with no red errors, the application can be run
+
+6. The application itself can be run from the terminal by using the command - flutter run - or it can be run by clicking the green triangle play button
+
+7. Once the application is displayed on the device you can work through it, click all of the buttons and enjoy using fit4U!
 
 
