@@ -7,4 +7,10 @@ fit4U is a fitness application that allows for users to create unique and person
 
 # Requirements
 
+In order to run fit4U there are some components that need to be installed and the steps are as follows:
+
+1. Flutter installation
+2. Android Studio installation
+3. Firebase connection
+
 
