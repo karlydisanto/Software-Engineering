@@ -14,3 +14,21 @@ In order to run fit4U there are some components that need to be installed and th
 3. Firebase connection
 
 ## Installation
+
+1. For the flutter insallation the following link will take you through the steps:
+
+https://www.googleadservices.com/pagead/aclk?sa=L&ai=DChcSEwiixIvsyrztAhVO-8gKHR0VDEMYABAAGgJxdQ&ohost=www.google.com&cid=CAESQeD2cGScTUl32zd1rCgO5VC6J4hTrhtLcoC7_5yN_SsqV7V_8t9RFX8_UES3g-Ctmc67J37HxkJq20LtMh1GB8T6&sig=AOD64_1sEYLSRBsr_7vH-j4Xt6UVD19XpA&q&adurl&ved=2ahUKEwjKgYPsyrztAhW-GVkFHerSDTYQ0Qx6BAgFEAE
+
+2. For the installation of Android Studio the following link will take you through the steps:
+
+https://developer.android.com/studio
+
+3. In order to connect the firebase database and flutter, you can follow the steps on the following link:
+
+https://firebase.google.com/docs/flutter/setup
+
+4. Once all of these installations and connections have been made, the program can be run by choosing a device from Android Studios (Tools --> AVD Manager --> Download a device)
+
+5. The application itself can be run from the terminal by using the command - flutter run - or it can be run by clicking the green triangle play button
+
+
